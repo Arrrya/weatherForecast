@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <title>今日天气</title>
+    <link href="css.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<div class="header">
+    <div class="nav">
+        <ul>
+            <li>今日天气</li>
+            <li>预警</li>
+            <li>关于我们</li>
+            <li>更多</li>
+        </ul>
+    </div>
+</div> <!-- 头部 -->
+<div class="middle">
+    <div class="shadow"></div>
+    <div class="location">
+        <img src="img_weather/dingwei.png" alt="location" width="25px" height="25px"/>
+        <p class="location2">当前位于:</p>
+        <p class="location3">杭州</p>
+    </div>
+    <div class="date"><p></p></div>
+    <div class="imgWeather"><img src="" width="150px" height="150px" id="imgWeather"/></div>
+    <div class="wendu"><span id="wendu"></span>℃</div>
+    <div class="data">
+        <div class="shidu">
+            <img class="data1" src="img_weather/tianqi-_9.png" width="30px" height="30px" >
+            <p class="weatherData">空气湿度：<span id="shidu"></span> </p>
+        </div>
+        <div class="ziwaixian">
+            <img class="data1" src="img_weather/ziwaixian.png" width="30px" height="30px">
+            <p class="weatherData">紫外线：<span id="uv"></span></p>
+        </div>
+        <div class="PM2.5">
+            <img class="data1" src="img_weather/PM_1.png" width="30px" height="30px">
+            <p class="weatherData">PM 2.5：<span id="pm"></span></p>
+        </div>
+        <div class="fengsu">
+            <img class="data1" src="img_weather/fengsu.png" width="30px" height="30px">
+            <p class="weatherData">风速：<span id="wind"></span></p>
+        </div>
+        <div class="eye">
+            <img class="data1" src="img_weather/eye.png" width="30px" height="30px">
+            <p class="weatherData">可见度：<span id="visibility"></span></p>
+        </div>
+        <div class="quality">
+            <img class="data1" src="img_weather/wumai.png" width="30px" height="30px">
+            <p class="weatherData">空气质量：<span id="aqi"></span></p>
+        </div>
+    </div>
+</div>
+<div>
+</div> <!-- 天气模块 -->
+
+<div class="footer"> <!-- 尾部 -->
+
+</div>
+<script type="text/javascript">
+    var xhr=new XMLHttpRequest();
+    var d=new Date();
+    document.getElementsByClassName("date")[0].innerHTML=d.toLocaleDateString();
+    xhr.open("GET","https://api.hduhelp.com/weather/v1/realTime",true);
+    xhr.onreadystatechange=function () {
+        if (xhr.readyState==4){
+            if(xhr.status==200){
+                var weather_Data=JSON.parse(xhr.responseText);
+                console.log(weather_Data);
+                document.getElementsByClassName("location2")[0].innerHTML="当前位置："+weather_Data.location[0].toFixed(2)+"&nbsp;&nbsp;&nbsp"+weather_Data.location[1].toFixed(2);
+                document.getElementById("wendu").innerHTML=weather_Data.result.temperature;
+                document.getElementById("shidu").innerHTML=weather_Data.result.humidity;
+                document.getElementById("uv").innerHTML=weather_Data.result.ultraviolet.desc;
+                document.getElementById("pm").innerHTML=weather_Data.result.pm25;
+                document.getElementById("wind").innerHTML=weather_Data.result.wind.speed;
+                document.getElementById("visibility").innerHTML=weather_Data.result.visibility;
+                document.getElementById("aqi").innerHTML=weather_Data.result.aqi;
+               // weather_Data.result.skycon="RAIN";
+                if (weather_Data.result.skycon=="CLEAR_DAY" || weather_Data.result.skycon=="CLEAR_NIGHT")
+                {
+                    document.getElementById("imgWeather").setAttribute("src","img_weather/qing.png");
+                    document.getElementsByClassName("middle")[0].style.backgroundImage="url('img/fine.jpg')";
+                }
+                else if (weather_Data.result.skycon=="PARTLY_CLOUDY_DAY" || weather_Data.result.skycon=="PARTLY_CLOUDY_NIGHT")
+                {
+                    document.getElementById("imgWeather").setAttribute("src", "img_weather/duoyun.png");
+                    document.getElementsByClassName("middle")[0].style.backgroundImage = "url('img/cloudy.jpg')";
+                }
+                else if(weather_Data.result.skycon=="CLOUDY")
+                {
+                    document.getElementById("imgWeather").setAttribute("src", "img_weather/ying.png");
+                    document.getElementsByClassName("middle")[0].style.backgroundImage = "url('img/overcast.jpg')";
+                }
+                else if(weather_Data.result.skycon=="RAIN")
+                {
+                    document.getElementById("imgWeather").setAttribute("src", "img_weather/yu.png");
+                    document.getElementsByClassName("middle")[0].style.backgroundImage = "url('img/rain.jpg')";
+                }
+            }
+        }
+    }
+    xhr.send(null);
+    console.log();
+
+</script>
+</body>
+</html>

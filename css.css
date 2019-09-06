@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header{
+    width: 100%;
+    height: 52px;
+    background-color: #333333;
+}
+.header .nav{
+    float: left;
+}
+.header .nav ul{
+    padding-left: 80px;
+}
+.header .nav ul li{
+    font-family: "Tahoma";
+    font-size: 16px;
+    float: left;
+    padding-top: 15px;
+    padding-left: 50px;
+    list-style-type: none;
+    color: white;
+}
+.middle{
+    width: 100%;
+    height: 600px;
+    background-image: url("");
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+.middle .shadow{
+    position: absolute;
+    top: 52px;
+    right: 10%;
+    left: 10%;
+    height: 600px;
+    opacity: 0.5;
+    background-color: black;
+}
+.middle .location{
+    position: absolute;
+    top: 80px;
+    left: 160px;
+}
+.middle .location2{
+    font-family: "Tahoma";
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    left: 27px;
+    width: 150px;
+    color: white;
+}
+.middle .location3{
+    font-family: "Tahoma";
+    font-size: 17px;
+    font-weight: bold;
+    position: absolute;
+    top: 6px;
+    left: 32px;
+    width: 100px;
+    color: white;
+}
+.middle .date{
+    font-family: "Tahoma";
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    top: 68px;
+    right: 165px;
+    color: white;
+}
+.middle .imgWeather{
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-left: -73px;
+}
+.middle .wendu{
+    font-family: "Microsoft YaHei";
+    font-size: 40px;
+    position: absolute;
+    top: 225px;
+    left: 50%;
+    margin-left: -44px;
+    color: white;
+}
+.middle .data .shidu{
+    position: absolute;
+    top: 62%;
+    left: 17%;
+}
+.middle .data .ziwaixian{
+    position: absolute;
+    top: 62%;
+    left: 48%;
+}
+.middle .data .PM2\.5{
+    position: absolute;
+    top: 62%;
+    right: 16.5%;
+}
+.middle .data .fengsu{
+    position: absolute;
+    top: 525px;
+    left: 17%;
+}
+.middle .data .eye{
+    position: absolute;
+    top: 525px;
+    left: 48%;
+}
+.middle .data .quality{
+    position: absolute;
+    top: 525px;
+    right: 16%;
+}
+.middle .data .weatherData{
+    font-family: "Microsoft YaHei";
+    font-size: 15px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+}
+.footer{
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    background-color: #333333;
+}
+.middle .data1{
+    vertical-align: central;
+}
+
